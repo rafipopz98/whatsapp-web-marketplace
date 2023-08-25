@@ -148,6 +148,7 @@
     font-size: 1.8rem;
     color: #51585c;
     /* gap: 20px; */
+    margin: 0 7px;
 }
 
 .chatbox_input_items ion-icon :nth-child(1) {
@@ -181,7 +182,11 @@
 .modal_container li p{
     text-align: center;
     padding: 5px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
     border-bottom: 1px solid #51585c;
+
     width: 100%;
     font-size: 1.3rem ;
     z-index: 2000;

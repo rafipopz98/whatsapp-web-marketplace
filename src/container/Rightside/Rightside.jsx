@@ -3,7 +3,7 @@ import "./Rightside.css";
 
 const Rightside = () => {
   const [modal, setModal] = useState(false);
-  const [marketplace, setMarketPlace] = useState([]);
+  // const [marketplace, setMarketPlace] = useState([]);
   const [haham,setHaham]=useState(false)
 
   const lolollol = () => {
@@ -85,7 +85,8 @@ const Rightside = () => {
           haham &&(
             <div onClick={goMarket}>
 
-            <ion-icon name="happy-outline"></ion-icon>
+            {/* <ion-icon name="happy-outline"></ion-icon> */}
+            <ion-icon name="storefront-outline"></ion-icon>
             </div>
           )
         }
