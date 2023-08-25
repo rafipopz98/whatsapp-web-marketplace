@@ -1,7 +1,6 @@
 import Singlemsg from "../Singlemsg/Singlemsg";
 import "./LeftSide.css";
 const LeftSide = () => {
- 
   return (
     <div className="leftSide">
       {/* header with icons */}
