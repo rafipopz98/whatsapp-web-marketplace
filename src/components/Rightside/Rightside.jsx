@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Rightside.css";
+import { Link } from "react-router-dom";
 
 const Rightside = () => {
   const [modal, setModal] = useState(false);
@@ -81,14 +82,20 @@ const Rightside = () => {
         <ion-icon name="attach-outline"></ion-icon>
         <input type="text" placeholder="Type a message" />
         {/* <ion-icon name="storefront-outline"></ion-icon> */}
+        <Link to='/pay'>
         <ion-icon name="logo-paypal"></ion-icon>
+
+        </Link>
         <ion-icon name="mic"></ion-icon>
         {
           haham &&(
             <div onClick={goMarket}>
 
             {/* <ion-icon name="happy-outline"></ion-icon> */}
+            <Link to='/mp'>
             <ion-icon name="storefront-outline"></ion-icon>
+
+            </Link>
             </div>
           )
         }

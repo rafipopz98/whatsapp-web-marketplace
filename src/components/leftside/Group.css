@@ -11,10 +11,11 @@
     background-color:#cdcdcd;
     padding: 20px;
     /* color: #000; */
+    /* opacity: 0.5; */
 }
 .logo_grp img{
     width: 200px;
-    mix-blend-mode: multiply;
+    mix-blend-mode: darken;
 }
 .userAdder{
     display: flex;
