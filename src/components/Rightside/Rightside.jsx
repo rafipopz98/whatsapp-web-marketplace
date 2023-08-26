@@ -80,6 +80,8 @@ const Rightside = () => {
         <ion-icon name="happy-outline"></ion-icon>
         <ion-icon name="attach-outline"></ion-icon>
         <input type="text" placeholder="Type a message" />
+        {/* <ion-icon name="storefront-outline"></ion-icon> */}
+        <ion-icon name="logo-paypal"></ion-icon>
         <ion-icon name="mic"></ion-icon>
         {
           haham &&(

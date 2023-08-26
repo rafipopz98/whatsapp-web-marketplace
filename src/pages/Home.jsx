@@ -1,5 +1,5 @@
-import Rightside from "../container/Rightside/Rightside"
-import LeftSide from "../container/leftside/LeftSide"
+import Rightside from "../components/Rightside/Rightside"
+import LeftSide from "../components/leftside/LeftSide"
 
 const Home = () => {
   return (
