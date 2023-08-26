@@ -1,0 +1,75 @@
+.grpAdder{
+    position: absolute;
+    height: 400px;
+    top: 68px;
+    right:  -29px;
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color:#cdcdcd;
+    padding: 20px;
+    /* color: #000; */
+}
+.logo_grp img{
+    width: 200px;
+    mix-blend-mode: multiply;
+}
+.userAdder{
+    display: flex;
+    align-items: center;
+    /* color: #000; */
+    gap: 10px;
+    justify-content: center;
+}
+.grp_name input{
+    width: 100%;
+    /* color: #000; */
+    outline: none;
+    border: none;
+    background: #e1dddd;
+    padding: 6px;
+    height: 38px;
+    border-radius: 30px;
+    font-size: 14px;
+    padding-left: 40px;
+}
+.grp_name input::placeholder{
+    color: #000;
+}
+.userAdder input::placeholder{
+    color: #000;
+}
+.userAdder input{
+    color: #000;
+    width: 250px;
+    outline: none;
+    border: none;
+    background: #e1dddd;
+    padding: 6px;
+    height: 38px;
+    border-radius: 30px;
+    font-size: 14px;
+    padding-left: 40px;
+}
+.userAdder button, .submit_grp button{
+    opacity: 1;
+    background-color: #009688;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+
+    color: #000;
+    cursor: pointer;
+    border-radius: 50%;
+    border-radius: 10px;
+}
+.permission {
+    display:inline-flex;
+    color: #000;
+    /* color: #fff; */
+    font-size: 15px;
+
+    gap: 10px;
+}

@@ -1,18 +1,23 @@
 import { useState } from "react";
 import Singlemsg from "../Singlemsg/Singlemsg";
 import "./LeftSide.css";
+import Group from "./Group";
 const LeftSide = () => {
   const [modalu, setModalu] = useState(false);
-  // const [both, setBoth] = useState(false);
+  const [both, setBoth] = useState(true);
+
 
   const modulu = () => {
     console.log("lol");
     setModalu(!modalu);
-    // setGrpHelper(!grpHelper)
+    setBoth(!both)
+    
   };
   const groupadd = () => {
     console.log("grp add btn");
-    setModalu(!modalu);
+    // setModalu(!modalu);
+setBoth(!both)
+
   };
   return (
     <div className="leftSide">
@@ -47,6 +52,10 @@ const LeftSide = () => {
                   </p>
                 </li>
               </ul>
+              {
+                both && <Group />
+              }
+              {/* <Group /> */}
             </div>
           )}
         </ul>
@@ -70,3 +79,4 @@ const LeftSide = () => {
 };
 
 export default LeftSide;
+
