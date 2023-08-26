@@ -31,7 +31,7 @@ const Rightside = () => {
             <p>online</p>
           </div>
         </div>
-
+ 
         <div>
           <ul className="navbar">
             <li>

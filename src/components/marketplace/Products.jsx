@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Products = (item) => {
   return (
-    <Link className="linkStyle">
+    <Link className="linkStyle" to={`/mp/${item.id}`}>
       <div className="products_mp card">
       <div className="images_card">
         <img
