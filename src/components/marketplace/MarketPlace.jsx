@@ -1,9 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar_MP from "./Navbar_MP";
 import "./MarketPlace.css";
 import Products from "./Products";
-
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 const MarketPlace = () => {
+  const {groupID} = useParams();
+  const navigate = useNavigate();
+  const [marketPlace, setMarketPlace] = useState(null);
+  // const [products, setProduct] = useState([])
+
+  useEffect(()=>{
+    axios.get(`http://localhost:4000/market-place/${groupID}`).then(res=>{
+      if(res.data.success){
+        if(res.data.data.length>0)
+          setMarketPlace(res.data.data[0]);
+          
+          else{
+            navigate(`/mp/form/${groupID}`)
+          }
+      }else{
+        navigate(`/mp/form/${groupID}`)
+      }
+    })
+  }, [])
+
   const data = [
     {
       id: 1,
@@ -35,7 +56,7 @@ const MarketPlace = () => {
   return (
     <div className="container mp_container">
       <div className="upp">
-        <Navbar_MP />
+        <Navbar_MP marketPlaceID={marketPlace?._id}  groupID={groupID}/>
       </div>
       <div className="product_container_mp">
         <div className="left_products">
@@ -96,8 +117,8 @@ const MarketPlace = () => {
           </div>
         </div>
         <div className="down_featured">
-          {data.map((item) => (
-          <Products item={item} key={item.id}/>
+          {marketPlace?.products && marketPlace?.products.length > 0 && marketPlace.products.map((item) => (
+          <Products item={item} groupID={groupID} marketPlaceID={marketPlace?._id} key={item.id}/>
         ))}
           {/* <Products /> */}
         </div>

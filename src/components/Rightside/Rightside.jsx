@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./Rightside.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import AuthContext from "../../contexts/authContext";
 
-const Rightside = () => {
+const Rightside = ({ currgroup }) => {
   const [modal, setModal] = useState(false);
   // const [marketplace, setMarketPlace] = useState([]);
-  const [haham,setHaham]=useState(false)
+  const [haham, setHaham] = useState(false);
+  const [group, setGroup] = useState([]);
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log("authhhhhhh1233212031-39-fkjahjdhkahsfkj", auth);
+    console.log(currgroup);
+    setGroup(currgroup);
+  }, [currgroup]);
 
   const lolollol = () => {
     console.log("lol");
@@ -13,11 +22,9 @@ const Rightside = () => {
   };
   const marketPlaceAdder = () => {
     console.log("ppppp");
-   setHaham(!haham)
+    setHaham(!haham);
   };
-  const goMarket=()=>[
-    console.log("market")
-  ]
+  const goMarket = () => [console.log("market")];
   return (
     <div className="rightside">
       <div className="header_right">
@@ -28,11 +35,11 @@ const Rightside = () => {
             alt="userImg"
           />
           <div>
-            <h3>lolol </h3>
-            <p>online</p>
+            <h3>{group ? group.name : "Dummy group Name"}</h3>
+            {/* <p>online</p> */}
           </div>
         </div>
- 
+
         <div>
           <ul className="navbar">
             <li>
@@ -47,11 +54,14 @@ const Rightside = () => {
                   <li>
                     <p>settings</p>
                   </li>
-                  <li>
-                    <p onClick={marketPlaceAdder} className="hahaha">
-                      add market place
-                    </p>
-                  </li>
+                  {auth && group?.admins?.includes(auth.phoneNumber) ? (
+                    <li>
+                      {group.marketPlace?<p className="hahaha">turn off market place</p>: <p onClick={marketPlaceAdder} className="hahaha">
+                        add market place
+                      </p>}
+                      
+                    </li>
+                  ) : <></>}
                 </ul>
               </div>
             )}
@@ -82,23 +92,18 @@ const Rightside = () => {
         <ion-icon name="attach-outline"></ion-icon>
         <input type="text" placeholder="Type a message" />
         {/* <ion-icon name="storefront-outline"></ion-icon> */}
-        <Link to='/pay'>
-        <ion-icon name="logo-paypal"></ion-icon>
-
+        <Link to="/pay">
+          <ion-icon name="logo-paypal"></ion-icon>
         </Link>
         <ion-icon name="mic"></ion-icon>
-        {
-          haham &&(
-            <div onClick={goMarket}>
-
+        {group && group.marketPlace && (
+          <div onClick={goMarket}>
             {/* <ion-icon name="happy-outline"></ion-icon> */}
-            <Link to='/mp'>
-            <ion-icon name="storefront-outline"></ion-icon>
-
+            <Link to={`/mp/${group._id}`} state={{group}}>
+              <ion-icon name="storefront-outline"></ion-icon>
             </Link>
-            </div>
-          )
-        }
+          </div>
+        )}
       </div>
     </div>
   );

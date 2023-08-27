@@ -74,3 +74,37 @@
 
     gap: 10px;
 }
+.mpName, .itemAdd_mp{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgb(250, 246, 246);
+}
+.mpName input,.itemAdd_mp input{
+
+    color: #000;
+    width: 250px;
+    outline: none;
+    border: none;
+    background: #e1dddd;
+    padding: 6px;
+    height: 38px;
+    border-radius: 30px;
+    font-size: 14px;
+    padding-left: 40px;
+}
+.mpName button, .itemAdd_mp button{
+    opacity: 1;
+    background-color: #009688;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+
+    color: #000;
+    cursor: pointer;
+    border-radius: 50%;
+    border-radius: 10px;
+}

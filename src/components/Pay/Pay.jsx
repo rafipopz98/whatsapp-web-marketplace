@@ -1,7 +1,7 @@
-import React from "react";
 import "./Pay.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const Pay = () => {
+  const location = useLocation();
   return (
     <div className="container container_pay">
       <h1 style={{ color: "#000" }}>WhatsApp Payment</h1>
@@ -18,7 +18,7 @@ const Pay = () => {
             Go Home
           </div>
         </Link>
-        <Link to="mp">
+        <Link to={`/mp/${location.state?.groupID}`}>
           <div className="icon">
             <ion-icon name="storefront-outline"></ion-icon>
             Payment Processed

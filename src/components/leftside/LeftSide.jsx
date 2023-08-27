@@ -1,24 +1,57 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Singlemsg from "../Singlemsg/Singlemsg";
 import "./LeftSide.css";
 import Group from "./Group";
-const LeftSide = () => {
+import AuthContext from "../../contexts/authContext";
+import axios from "axios";
+import { useNavigate, } from "react-router-dom";
+
+const LeftSide = ({setCurrGroup}) => {
   const [modalu, setModalu] = useState(false);
   const [both, setBoth] = useState(true);
+  const [groups, setGroups] = useState([]);
+  const navigate = useNavigate()
 
+  const { auth, setAuth } = useContext(AuthContext);
+
+  useEffect(() => {
+    let user;
+    if (auth !== undefined) {
+      user = JSON.parse(localStorage.getItem("user"));
+      setAuth(user);
+    } else user = auth;
+    const query = `http://localhost:4000/group/${user?.phoneNumber}`;
+    console.log(query);
+    axios.get(query).then((res) => {
+      console.log(res.data);
+      if (res.data.success) setGroups(res.data.data);
+    });
+  }, []);
 
   const modulu = () => {
     console.log("lol");
     setModalu(!modalu);
-    setBoth(!both)
-    
+    setBoth(!both);
+    console.log(auth?.phoneNumber);
   };
+
   const groupadd = () => {
     console.log("grp add btn");
     // setModalu(!modalu);
-setBoth(!both)
+    setBoth(!both);
+  };
+
+  
+
+  const logoutHandler = () => {
+    console.log("logged out");
+    // setAuth(localStorage.clear())
+    setAuth({});
+    localStorage.clear();
+    navigate('/login')
 
   };
+
   return (
     <div className="leftSide">
       {/* header with icons */}
@@ -51,10 +84,13 @@ setBoth(!both)
                     Group
                   </p>
                 </li>
+                <li>
+                  <p onClick={logoutHandler} className="hahaha">
+                    Logout
+                  </p>
+                </li>
               </ul>
-              {
-                both && <Group />
-              }
+              {both && <Group />}
               {/* <Group /> */}
             </div>
           )}
@@ -69,14 +105,13 @@ setBoth(!both)
       </div>
       {/* chatList */}
       <div className="chatlist">
-        <Singlemsg />
-        {/* <Singlemsg /> */}
-        {/* <Singlemsg /> */}
-        {/* <Singlemsg /> */}
+        {groups.length !==0 &&
+          groups.map((el, i) => (
+          
+          <Singlemsg  key={i} group={el} setCurrGroup={setCurrGroup} />))}
       </div>
     </div>
   );
 };
 
 export default LeftSide;
-

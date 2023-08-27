@@ -37,6 +37,7 @@
 .product_detail .right_prdtDtl .price_dtl{
     font-size: 30px;color: #2879fe;
     font-weight: 500;
+    /* cursor: pointer; */
 }
 .product_detail .right_prdtDtl p{
    font-size: 18px;
@@ -97,4 +98,7 @@
 
 .product_detail .right_prdtDtl  hr{
     border: 1px solid #333;
+}
+.link_dtl .item_dtl{
+    cursor: pointer;
 }
